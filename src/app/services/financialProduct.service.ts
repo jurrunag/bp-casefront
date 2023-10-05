@@ -20,6 +20,10 @@ export class FinancialProductService {
   getProduct(): Observable<any>{
     return this.http.get<ProductoFinanciero>(`${environment.apiProduct}`, this.httpOptions);
   }
+  
+  updateProduct(request:any): Observable<any>{
+    return this.http.put<ProductoFinanciero>(`${environment.apiProduct}`,request, this.httpOptions);
+  }
 
   createProduct(request:any): Observable<any>{
     return this.http.post<any>(`${environment.apiProduct}`,request ,this.httpOptions);

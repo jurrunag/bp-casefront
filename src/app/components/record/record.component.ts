@@ -33,10 +33,6 @@ export class RecordComponent {
     return control !== null && control !== undefined && control.invalid && control.touched;
   }
 
-  onSubmit() {
-    console.log('Datos enviados:', this.registration);
-  }
-
   restart() {
     this.registration.reset();
   }
@@ -87,7 +83,6 @@ export class RecordComponent {
       revisionDateControl.setValue(fechaFormateada);
     }
   }
-
 
   onFileChange(event: any) {
     const selectedFile = event.target.files[0];

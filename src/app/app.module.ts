@@ -10,6 +10,7 @@ import { RecordComponent } from './components/record/record.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { OptionsComponent } from './components/options/options.component';
 import { TooltipModule } from 'ng2-tooltip-directive';
+import { EditRecordComponent } from './components/edit-record/edit-record.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TooltipModule } from 'ng2-tooltip-directive';
     MainComponent,
     HeaderComponent,
     RecordComponent,
-    OptionsComponent
+    OptionsComponent,
+    EditRecordComponent
   ],
   imports: [
     BrowserModule,

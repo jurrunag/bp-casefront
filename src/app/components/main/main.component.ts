@@ -41,17 +41,28 @@ export class MainComponent implements OnInit{
     })
   }
  
+  setLocalStorage(key: string, value: any) {
+    const now = new Date();
+    const item = {
+      value,
+      expiry: parseInt(now.getTime().toFixed(0), 10)
+    };
+
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+
+
   toggleMenu(index: number) {
     if (this.mostrarMenuIndex === index) {
-      this.mostrarMenuIndex = null; // Ocultar el menú si se hace clic en la misma fila nuevamente
+      this.mostrarMenuIndex = null;
     } else {
-      this.mostrarMenuIndex = index; // Mostrar el menú en la fila seleccionada
+      this.mostrarMenuIndex = index;
     }
   }
   
   editar(item:any) {
-    console.log('Llegó?: ', item);
-    
+    this.setLocalStorage('item', item);
+    this.router.navigate([`/record/edit/${item.id}`]);
   }
 
   eliminar(item:any) {
@@ -69,7 +80,6 @@ export class MainComponent implements OnInit{
         }
       }
     });
-    console.log('Llegó?: ', item);
   }
 
   buscar(termino: string) {
