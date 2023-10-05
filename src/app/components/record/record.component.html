@@ -1,0 +1,49 @@
+<app-header></app-header>
+  <div class="container">
+    <h1>Formulario de Registro</h1>
+    <form [formGroup]="registration" (ngSubmit)="crearRegistro()">
+      <div class="row">
+        <div class="col">
+          <label for="id">ID</label>
+          <input type="text" class="form-control" formControlName="id" 
+          placeholder="Identificador del producto">
+          <div *ngIf="hasErrorAndTouched('id')" class="text-danger">
+            ID no valido!
+          </div>
+        </div>
+        
+        <div class="col">
+          <label for="name">Nombre</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="Tarjeta Crédito">
+          <div *ngIf="hasErrorAndTouched('name')" class="text-danger">{{mensaje}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="description">Descripción</label>
+          <input type="text" class="form-control" formControlName="description" placeholder="Descripción del Producto">
+          <div *ngIf="hasErrorAndTouched('description')" class="text-danger">{{mensaje}}</div>
+        </div>
+        <div class="col">
+          <label for="logo">Logo</label>
+          <input type="text" class="form-control" formControlName="logo" placeholder="Url del logo">
+          <div *ngIf="hasErrorAndTouched('logo')" class="text-danger">{{mensaje}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="releaseDate">Fecha de Liberación</label>
+          <input type="date" class="form-control" formControlName="releaseDate" (change)="mostrarAdelante($event)">
+          <div *ngIf="hasErrorAndTouched('releaseDate')" class="text-danger">{{mensaje}}</div>
+        </div>
+        <div class="col">
+          <label for="revisionDate">Fecha de Revisión</label>
+          <input type="text" class="form-control" formControlName="revisionDate" [value]="registration.get('revisionDate')?.value" [readonly]="true">
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <button type="button" class="btn btn-reset">Reiniciar</button>
+        <button type="submit" class="btn btn-submit" [disabled]="!registration.valid">Enviar</button>
+      </div>
+    </form>
+  </div>
