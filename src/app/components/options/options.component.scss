@@ -1,0 +1,17 @@
+.menu-popup {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 9999; /* Asegura que el menú esté por encima de otros elementos */
+  }
+  
+  .menu-popup div {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .menu-popup div:hover {
+    background-color: #f0f0f0;
+  }
+  

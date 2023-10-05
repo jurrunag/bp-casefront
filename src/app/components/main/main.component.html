@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="search-container">
-        <input type="text" class="search-input" placeholder="Buscar">
+        <input type="text" class="search-input" placeholder="Buscar" [(ngModel)]="terminoBusqueda" (keyup.enter)="buscar(terminoBusqueda)">
         <button class="btn-agregar" (click)="agregarProduct()">Agregar</button>
     </div>
 
@@ -14,37 +14,25 @@
                 <th>Descripción<i class="info-icon fas fa-info-circle"></i></th>
                 <th>Fecha de liberación <i class="info-icon fas fa-info-circle"></i></th>
                 <th>Fecha de reestructuración<i class="info-icon fas fa-info-circle"></i></th>
-                <th>Acciones</th> <!-- Sexta columna -->
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <!-- Contenido de la tabla aquí -->
-            <tr>
-                <td>Logo 1</td>
-                <td>Dato 1</td>
-                <td>Dato 3</td>
-                <td>Dato 4</td>
-                <td>Dato 5</td>
-                <td><i class="options-icon fas fa-cog"></i></td>
+            <tr *ngFor="let item of list, let i = index">
+              <td>{{ item.logo }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.description }}</td>
+              <td>{{ item.date_release }}</td>
+              <td>{{ item.date_revision }}</td>
+              <td (click)="toggleMenu(i)">
+                <i class="fas fa-ellipsis-v options-icon"></i>
+                <app-options  *ngIf="mostrarMenuIndex  === i"
+                               (editarClicked)="editar(item)"
+                               (eliminarClicked)="eliminar(item)">
+                </app-options>
+              </td>
             </tr>
-            <!-- Repite filas para hacer la tabla más larga -->
-            <tr>
-                <td>Logo 2</td>
-                <td>Dato 1</td>
-                <td>Dato 3</td>
-                <td>Dato 4</td>
-                <td>Dato 5</td>
-                <td><i class="options-icon fas fa-cog"></i></td>
-            </tr>
-            <tr>
-                <td>Logo 3</td>
-                <td>Dato 1</td>
-                <td>Dato 3</td>
-                <td>Dato 4</td>
-                <td>Dato 5</td>
-                <td><i class="options-icon fas fa-cog"></i></td>
-            </tr>
-        </tbody>
+          </tbody>
     </table>
 
     <div class="table-bottom">

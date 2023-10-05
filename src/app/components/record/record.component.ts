@@ -37,9 +37,10 @@ export class RecordComponent {
     console.log('Datos enviados:', this.registration);
   }
 
-  resetForm() {
+  restart() {
     this.registration.reset();
   }
+
   crearRegistro() {
     const request = {
       id: this.registration.value.id,
@@ -49,7 +50,6 @@ export class RecordComponent {
       date_release: this.registration.value.releaseDate,
       date_revision: this.registration.value.revisionDate
     }
-    console.log('CREÓOO', request);
     this.financial.createProduct(request).subscribe({
       next:
         data => {
